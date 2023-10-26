@@ -9,7 +9,9 @@ public class ball : MonoBehaviour
     public float Yposition = 0f;
     public float Xspeed;
     public float Yspeed;
-
+    public TMPro.TMP_Text scoreboard;
+    public float scorep1;
+    public float scorep2;
 
     // Start is called before the first frame update
     void Start()
