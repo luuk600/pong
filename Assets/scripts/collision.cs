@@ -22,6 +22,8 @@ public class collision : MonoBehaviour
     private string p2won;
     private GameObject winner;
     private TMPro.TMP_Text winnerText;
+    private GameObject botPaddle;
+    AudioSource hitAudio;
 
 
     // Start is called before the first frame update
@@ -31,7 +33,10 @@ public class collision : MonoBehaviour
         scoreText = scoreGameObject.GetComponent<TMPro.TMP_Text>();
         winner = GameObject.Find("who-won");
         winnerText = winner.GetComponent<TMPro.TMP_Text>();
-        
+        botPaddle = GameObject.Find("paddle right");
+        hitAudio = GetComponent<AudioSource>();
+
+
     }
 
     // Update is called once per frame
@@ -50,7 +55,7 @@ public class collision : MonoBehaviour
             Debug.Log("toucht horizontal wall");
             // making the ball speedup
             Xspeed = Xspeed * -1.1f;
-
+            hitAudio.Play();
         }
         if (collision.gameObject.CompareTag("verticalwall"))
         {
@@ -64,7 +69,7 @@ public class collision : MonoBehaviour
             // speed reset after point
             Yspeed = 4f;
             Xspeed = 4f;
-
+            resetPaddle();
         }
         if (collision.gameObject.CompareTag("verticalwall2"))
         {
@@ -74,7 +79,7 @@ public class collision : MonoBehaviour
             // speed reset after point
             Yspeed = 4f;
             Xspeed = 4f;
-            
+            resetPaddle();
         }
         if (collision.gameObject.CompareTag("paddle"))
         {
@@ -123,8 +128,10 @@ public class collision : MonoBehaviour
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
-    IEnumerator yourmotherCoroutine() 
+    
+
+    private void resetPaddle()
     {
-        yield return new WaitForSeconds(5);
+        botPaddle.GetComponent<botpaddle>().yPosition = 0f;
     }
 }
