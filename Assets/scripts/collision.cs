@@ -133,7 +133,7 @@ public class collision : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // looking for the scene so it can reload it
 
         //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time); // signaling that the coroutine has ended
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time); // signaling that the coroutine has ended 
     }
     
 
